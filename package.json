@@ -1,0 +1,34 @@
+{
+  "name": "posmotri-v-okno-fd",
+  "version": "1.0.0",
+  "description": "It is my second project for yandex Practicum frontend-developer course",
+  "keywords": [
+    "pseudo-classes",
+    "pseudo-elements"
+  ],
+  "homepage": "https://github.com/frontbyte/posmotri-v-okno-fd#readme",
+  "bugs": {
+    "url": "https://github.com/frontbyte/posmotri-v-okno-fd/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frontbyte/posmotri-v-okno-fd.git"
+  },
+  "license": "ISC",
+  "author": "frontbyte",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Привет!'",
+    "check": "prettier --check './**/*.{html,css,js}'",
+    "format": "prettier --write './**/*.{html,css,js}'",
+    "lint": "stylelint \"**/*.css\"",
+    "lintfix": "stylelint \"**/*.css\" --fix",
+    "checkAll": "npm run check && npm run lint",
+    "fixAll": "npm run format && npm run lintfix"
+  },
+  "dependencies": {
+    "prettier": "^3.9.3",
+    "stylelint": "^17.14.0"
+  }
+}
