@@ -12,13 +12,13 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  inline-size: 1200px;
-  block-size: 100%;
   margin: auto;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  inline-size: 1200px;
+  block-size: 100%;
 }
 
 h1,
@@ -42,30 +42,25 @@ ol {
 
 .visually-hidden {
   position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
   clip-path: inset(50%);
   white-space: nowrap;
 }
 
 .button {
   border: 1px solid currentColor;
-  background-color: transparent;
+  padding: 6px;
   color: inherit;
   font-family: inherit;
   font-weight: 700;
-  padding: 6px;
+  font-size: 18px;
+  text-decoration: underline transparent;
+  background-color: transparent;
+  transition: all 0.2s;
   cursor: pointer;
-}
-
-.button:hover {
-  text-decoration: underline;
-}
-
-.button:active {
-  background-color: #545050;
 }
 
 .button:focus {
@@ -77,13 +72,22 @@ ol {
   outline-offset: 2px;
 }
 
+.button:hover {
+  text-decoration: underline currentColor;
+}
+
+.button:active {
+  background-color: #545050;
+}
+
 /* Кастомный скроллбар */
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgb(217 217 217 / 10%);
+  background: rgb(217 217 217 / 0.1);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
@@ -99,17 +103,17 @@ ol {
   padding-inline: 30px;
 }
 
-/* TODO: задать нижний отступ через gap или :not(:last-child) */
-/* TODO: попробовать не задавать жестко размеры контейнера или использовать aspect-ratio */
+.result {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
 
 .result__video-container {
   position: relative;
-  width: 711px;
+  min-width: 711px;
   height: 386px;
-  margin-bottom: 16px;
 }
-
-/* NOTE: возможно object-fit: contain */
 
 .result__video {
   width: 100%;
@@ -122,23 +126,27 @@ ol {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  column-gap: 40px;
+  column-gap: 30px;
 }
 
 .search-form__fieldset {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
   border: none;
 }
 
 .search-form__fieldset-title {
   font-weight: 400;
   font-size: 18px;
+  line-height: 1.2;
 }
 
 .search-form__label {
   display: flex;
   align-items: center;
-  width: fit-content;
   column-gap: 1.5px;
+  width: fit-content;
 }
 
 .search-form__label:has(:focus-visible) {
@@ -147,15 +155,15 @@ ol {
 }
 
 .search-form__textfield {
+  min-width: 225px;
   border-inline: none;
   border-block: 1px solid #fff;
-  background-color: transparent;
   padding: 1.5px 0;
-  font-weight: 400;
-  font-size: 18px;
   color: inherit;
   font-family: inherit;
-  min-width: 225px;
+  font-weight: 400;
+  font-size: 18px;
+  background-color: transparent;
   appearance: none;
 }
 
@@ -165,13 +173,15 @@ ol {
 
 .search-form__textfield::placeholder {
   color: rgb(255 255 255 / 0.7);
-  font-size: 18px;
   font-weight: 400;
+  font-size: 18px;
 }
 
 .search-form__checkbox-list {
   display: flex;
-  column-gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
 }
 
 .search-form__pseudo-checkbox {
@@ -185,38 +195,45 @@ ol {
 .search-form__pseudo-checkbox::after {
   content: '';
   display: block;
-  background-color: currentColor;
   width: 100%;
   height: 100%;
   opacity: 0;
+  background-color: currentColor;
+  transition: all 0.2s;
 }
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
   opacity: 1;
 }
 
+.search-form__label-text {
+  text-decoration: underline transparent;
+  transition: all 0.2s;
+}
+
 .search-form__label:hover .search-form__label-text {
-  text-decoration: underline;
+  text-decoration: underline currentColor;
   cursor: pointer;
 }
 
 .search-form__submit-button {
-  min-width: 194px;
   align-self: end;
+  min-width: 194px;
 }
 
 .content__details {
   display: flex;
   flex-direction: column;
-  row-gap: 26px;
-  height: 100%;
+  row-gap: 20px;
   width: 100%;
+  height: 100%;
 }
 
 .title {
-  text-transform: uppercase;
+  font-family: Oswald, sans-serif;
   font-size: 75px;
   line-height: 0.94;
+  text-transform: uppercase;
 }
 
 .content__accent {
@@ -229,8 +246,8 @@ ol {
   flex-direction: column;
   row-gap: 30px;
   height: 298px;
-  overflow-y: auto;
   padding: 2px 3px;
+  overflow-y: auto;
 }
 
 .content__list {
@@ -242,17 +259,9 @@ ol {
 .content__card-link {
   display: block;
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline transparent;
+  transition: all 0.2s;
   cursor: pointer;
-}
-
-.content__card-link:active,
-.content__card-link_current {
-  background-color: #545050;
-}
-
-.content__card-link:hover {
-  text-decoration: underline;
 }
 
 .content__card-link:focus {
@@ -263,37 +272,46 @@ ol {
   outline: 1px solid currentColor;
 }
 
+.content__card-link:hover {
+  text-decoration: underline currentColor;
+}
+
+.content__card-link:active,
+.content__card-link_current {
+  background-color: #545050;
+}
+
 .content__video-card {
   display: flex;
   align-items: start;
 }
 
-/* возможно тут нужно использовать не pading-right 
-возможно нужно будеть сделать flex контейнером и gap 6px*/
-
 .content__video-card-description-container {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
+  row-gap: 6px;
   max-width: 196px;
-  padding-right: 5px;
 }
 
 .content__video-card-title {
+  overflow: hidden;
+  font-family: Oswald, sans-serif;
   font-weight: 700;
   font-size: 30px;
   line-height: 1;
   text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .content__video-card-description {
+  display: -webkit-box;
+  overflow: hidden;
   font-weight: 400;
   line-height: 0.9;
   -webkit-line-clamp: 4;
   line-clamp: 4;
-  overflow: hidden;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
 }
 
